@@ -763,15 +763,19 @@ function reducer(state = initialState, action) {
 console.log("custome");
 const mystore = (0, _myredux.myCreatStore)(reducer);
 console.log("MyStore", mystore);
-console.log(mystore.dispatch({
+console.log(mystore.getState());
+mystore.dispatch({
     type: "deposit"
-}));
-console.log(mystore.dispatch({
+});
+console.log(mystore.getState());
+mystore.dispatch({
     type: "deposit"
-}));
-console.log(mystore.dispatch({
+});
+console.log(mystore.getState());
+mystore.dispatch({
     type: "withdraw"
-}));
+});
+console.log(mystore.getState());
 // console.log(mystore.subscribe());
 // console.log(mystore.getstate());
 //////////////////////////////////////
@@ -1144,16 +1148,17 @@ parcelHelpers.export(exports, "myCreatStore", ()=>myCreatStore);
 function myCreatStore(reducer) {
     let state;
     const store = {
-        getstate () {
-            return "state";
+        getState () {
+            return state;
         },
-        dispatch: (action)=>{
-            return state = reducer(state, action);
+        dispatch (action) {
+            state = reducer(state, action);
         },
-        subscribe: ()=>{
-            return "subscribe";
-        }
+        subscribe () {}
     };
+    store.dispatch({
+        type: "deposit"
+    });
     return store;
 }
 

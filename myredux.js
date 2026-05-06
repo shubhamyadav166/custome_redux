@@ -1,18 +1,19 @@
 export function myCreatStore(reducer){
    let state
     const store={
-      getstate(){
-   return "state"
-
+      getState(){
+   return state
 },
-dispatch:(action)=>{
-   return state=reducer(state,action)
-},
-subscribe:()=>{
-   return "subscribe"
 
+dispatch(action){
+ state=reducer(state,action)
+},
+subscribe(){
+   
 }
 
     }
+
+    store.dispatch({type:"deposit"})
 return store
 }

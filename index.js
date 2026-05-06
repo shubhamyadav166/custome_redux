@@ -48,9 +48,14 @@ console.log("custome");
 
 const mystore=myCreatStore(reducer)
 console.log("MyStore",mystore);
-console.log(mystore.dispatch({type:"deposit"}))
-console.log(mystore.dispatch({type:"deposit"}))
-console.log(mystore.dispatch({type:"withdraw"}));
+console.log(mystore.getState());
+
+mystore.dispatch({type:"deposit"})
+console.log(mystore.getState());
+mystore.dispatch({type:"deposit"})
+console.log(mystore.getState());
+mystore.dispatch({type:"withdraw"})
+console.log(mystore.getState());
 
 
 
