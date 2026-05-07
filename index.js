@@ -2,8 +2,8 @@ import {createStore} from 'redux'
 ////////////////////////////////////
 import { myCreatStore } from './myredux';
 ///////////////////////////////////////
-//   let postCount=document.querySelector('.post-count')
-//     console.log(postCount);
+  let postCount=document.querySelector('.post-count')
+    console.log(postCount,"!!!!!!!!!!!!!!!");
  
 // console.dir(createStore());
 
@@ -34,28 +34,53 @@ switch(action.type){
 
 }
 
-// console.log(reduxState);
-
-
-
-//  const store=createStore(reducer)
-// console.log("Store value.....",store);
+ const store=createStore(reducer)
+console.log("Store value.....",store);
 
 
 //custome redux///////////////////////////////////// import my create store 
 console.log("custome");
-
-
 const mystore=myCreatStore(reducer)
+
+/////////////////////////
+
+
+
+const unsubscribe1=mystore.subscribe(()=>{
+     console.log("subscribe......",mystore.getState());
+  
+postCount.innerText=mystore.getState().post
+   console.log(postCount.innerText); 
+})
+const unsubscribe2=mystore.subscribe(()=>{
+    console.log("hii");
+    
+})
+
+
+
+console.log("???????????",mystore.getState().post);
+
+postCount.innerText=mystore.getState().post
+
+/////////////////////////
+
+
 console.log("MyStore",mystore);
-console.log(mystore.getState());
+
+console.log(mystore.getState(),"..................");
 
 mystore.dispatch({type:"deposit"})
+unsubscribe2("Hello kya hal chal bro redux is working good")
+
 console.log(mystore.getState());
 mystore.dispatch({type:"deposit"})
 console.log(mystore.getState());
 mystore.dispatch({type:"withdraw"})
 console.log(mystore.getState());
+
+
+
 
 
 
